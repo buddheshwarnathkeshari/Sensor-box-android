@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity"
+    android:background="#E1C2DFE6">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lottie_rawRes="@raw/sensor_animation"
+        app:lottie_autoPlay="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:id="@+id/ll_brand">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_sensor"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_logo"
+        android:text="Sensor Box by:"
+        android:id="@+id/tv_from"
+        android:gravity="center"
+        android:textSize="25dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nirmal Lab"
+        android:layout_below="@id/tv_from"
+        android:layout_toRightOf="@id/img_logo"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#000000"/>
+    </RelativeLayout>
+
+</RelativeLayout>
