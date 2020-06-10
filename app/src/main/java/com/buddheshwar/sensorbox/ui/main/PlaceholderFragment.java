@@ -1,9 +1,11 @@
 package com.buddheshwar.sensorbox.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,12 +15,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.buddheshwar.sensorbox.Flash;
+import com.buddheshwar.sensorbox.FlashLightActivity;
+import com.buddheshwar.sensorbox.MainScreen;
 import com.buddheshwar.sensorbox.R;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class PlaceholderFragment extends Fragment {
+
+    ImageView accelerometer,light,orientation,proximity,temperature,gyroscope,sound,magnetic,pressure,memory,flash;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -51,7 +58,13 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main_screen, container, false);
         final LinearLayout llSensor=root.findViewById(R.id.ll_SensorBox);
         final LinearLayout llTool=root.findViewById(R.id.ll_ToolBox);
-
+        flash=root.findViewById(R.id.img_11);
+        flash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Flash.class));
+            }
+        });
 
 
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

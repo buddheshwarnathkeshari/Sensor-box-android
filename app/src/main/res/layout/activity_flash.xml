@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Flash"
+    android:background="#000000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FlashLight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_power_settings_new_black_24dp"
+        android:layout_above="@id/id"
+        android:layout_marginBottom="-80dp"
+        android:id="@+id/img_power"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:id="@+id/id"
+        android:layout_width="175dp"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/button1"
+        android:gravity="bottom"
+        android:backgroundTint="#18191B">
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:backgroundTint="#2E313A"
+            android:background="@drawable/button1"
+            android:layout_margin="5dp">
+
+
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/circle1"
+                android:layout_margin="7dp"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <View
+                        android:id="@+id/dash_1"
+                        android:layout_width="40dp"
+                        android:layout_height="3dp"
+                        android:background="#50576A"
+                        android:layout_margin="3dp"/>
+
+                    <View
+                        android:id="@+id/dash_2"
+                        android:layout_width="40dp"
+                        android:layout_height="3dp"
+                        android:layout_margin="3dp"
+                        android:background="#50576A"/>
+
+                    <View
+                        android:id="@+id/dash_3"
+                        android:layout_width="40dp"
+                        android:layout_height="3dp"
+                        android:layout_margin="3dp"
+                        android:background="#50576A"/>
+
+                    <View
+                        android:id="@+id/dash_4"
+                        android:layout_width="40dp"
+                        android:layout_height="3dp"
+                        android:layout_margin="3dp"
+                        android:background="#50576A"/>
+
+
+                </LinearLayout>
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="off"
+            android:textAllCaps="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#51566A"
+            android:textSize="30dp"
+            android:layout_marginBottom="40dp"
+
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
