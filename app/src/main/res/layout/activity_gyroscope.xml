@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GyroscopeActivity"
+    android:background="#000000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gyroscope Sensor"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X-Axis"
+            android:textColor="#ffffff"
+            android:layout_margin="10dp"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/tv_y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y-Axis"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/tv_z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Z-Axis"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="25dp"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

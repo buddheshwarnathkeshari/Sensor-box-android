@@ -23,6 +23,7 @@ import com.buddheshwar.sensorbox.Accelerometer;
 import com.buddheshwar.sensorbox.CompassActivity;
 import com.buddheshwar.sensorbox.Flash;
 import com.buddheshwar.sensorbox.FlashLightActivity;
+import com.buddheshwar.sensorbox.GyroscopeActivity;
 import com.buddheshwar.sensorbox.LightActivity;
 import com.buddheshwar.sensorbox.Magnetic;
 import com.buddheshwar.sensorbox.MainScreen;
@@ -165,7 +166,8 @@ public class PlaceholderFragment extends Fragment {
 
                 if(gyroscopeSensor==null)
                     Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
-
+                else
+                    startActivity(new Intent(getActivity(), GyroscopeActivity.class));
             }
         });
 

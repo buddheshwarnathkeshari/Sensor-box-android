@@ -9,7 +9,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class LightActivity extends AppCompatActivity implements SensorEventListener {
+public class LightActivity extends AppCompatActivity /*implements SensorEventListener*/ {
     TextView textLIGHT_available, textLIGHT_reading;
 
     @Override
@@ -54,7 +54,7 @@ public class LightActivity extends AppCompatActivity implements SensorEventListe
 
     };
 
-    @Override
+  /*  @Override
     public void onSensorChanged(SensorEvent event) {
 
     }
@@ -62,6 +62,6 @@ public class LightActivity extends AppCompatActivity implements SensorEventListe
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-    }
+    }*/
 }
 
