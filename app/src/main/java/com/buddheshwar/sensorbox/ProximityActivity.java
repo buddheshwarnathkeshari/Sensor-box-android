@@ -3,11 +3,13 @@ package com.buddheshwar.sensorbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,5 +65,9 @@ public class ProximityActivity extends AppCompatActivity implements SensorEventL
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void goToInfo(View view) {
+        startActivity(new Intent(ProximityActivity.this,SensorInfoActivity.class));
     }
 }

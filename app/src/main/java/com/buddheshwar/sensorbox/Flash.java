@@ -57,8 +57,8 @@ public class Flash extends AppCompatActivity {
 
                         try {
                             cameraManager.setTorchMode(cameraID,false);
-                            tvOff.setVisibility(View.VISIBLE);
-                            rl.bringToFront();
+                            imgPower.setVisibility(View.GONE);
+                            tvOff.bringToFront();
                             v1.setBackgroundResource(R.color.dark);
                             v2.setBackgroundResource(R.color.dark);
                             v3.setBackgroundResource(R.color.dark);
@@ -74,8 +74,9 @@ public class Flash extends AppCompatActivity {
 
                         try {
                             cameraManager.setTorchMode(cameraID,true);
-                            tvOff.setVisibility(View.GONE);
+                            imgPower.setVisibility(View.VISIBLE);
                             imgPower.bringToFront();
+                            rl.bringToFront();
 
                             v1.setBackgroundResource(R.color.light);
                             v2.setBackgroundResource(R.color.light);

@@ -1,6 +1,9 @@
 package com.buddheshwar.sensorbox.ui.main;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -15,15 +19,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.buddheshwar.sensorbox.Accelerometer;
 import com.buddheshwar.sensorbox.CompassActivity;
 import com.buddheshwar.sensorbox.Flash;
 import com.buddheshwar.sensorbox.FlashLightActivity;
 import com.buddheshwar.sensorbox.LightActivity;
+import com.buddheshwar.sensorbox.Magnetic;
 import com.buddheshwar.sensorbox.MainScreen;
 import com.buddheshwar.sensorbox.Memory;
 import com.buddheshwar.sensorbox.ProximityActivity;
 import com.buddheshwar.sensorbox.R;
 import com.buddheshwar.sensorbox.Sound;
+
+import static android.content.Context.SENSOR_SERVICE;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,6 +40,11 @@ public class PlaceholderFragment extends Fragment {
 
     ImageView accelerometer,light,orientation,proximity,temperature,gyroscope,sound,magnetic,pressure,memory,
             flash;
+
+
+    SensorManager sensorManager;
+    Sensor accelerometerSensor,lightSensor,orientationSensor,proximitySensor,temperatureSensor,gyroscopeSensor,soundSensor,magneticSensor,pressureSensor;
+
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -64,27 +77,131 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main_screen, container, false);
         final LinearLayout llSensor=root.findViewById(R.id.ll_SensorBox);
         final LinearLayout llTool=root.findViewById(R.id.ll_ToolBox);
-        flash=root.findViewById(R.id.img_11);
-        memory=root.findViewById(R.id.img_10);
+        accelerometer=root.findViewById(R.id.img_1);
+        light=root.findViewById(R.id.img_2);
         orientation=root.findViewById(R.id.img_3);
         proximity=root.findViewById(R.id.img_4);
-        light=root.findViewById(R.id.img_2);
+        temperature=root.findViewById(R.id.img_5);
+        gyroscope=root.findViewById(R.id.img_6);
         sound=root.findViewById(R.id.img_7);
+        magnetic=root.findViewById(R.id.img_8);
+        pressure=root.findViewById(R.id.img_9);
+        memory=root.findViewById(R.id.img_10);
+        flash=root.findViewById(R.id.img_11);
 
 
-        sound.setOnClickListener(new View.OnClickListener() {
+
+        sensorManager = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
+
+        accelerometerSensor=sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        lightSensor=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        orientationSensor=sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+        proximitySensor=sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        temperatureSensor=sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        gyroscopeSensor=sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        magneticSensor=sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        pressureSensor=sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+
+    //click handling on accelerometer
+        accelerometer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(accelerometerSensor==null)
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                else
+                    startActivity(new Intent(getActivity(), Accelerometer.class));
+            }
+        });
+
+
+
+        light.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(lightSensor==null)
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                else
+                     startActivity(new Intent(getActivity(), LightActivity.class));
+            }
+        });
+
+
+        orientation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(orientationSensor==null)
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                else
+                     startActivity(new Intent(getActivity(), CompassActivity.class));
+            }
+        });
+
+
+        proximity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(proximitySensor==null)
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                else
+                startActivity(new Intent(getActivity(), ProximityActivity.class));
+            }
+        });
+
+
+        temperature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                temperatureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+                if (temperatureSensor == null) {
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
+
+        gyroscope.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(gyroscopeSensor==null)
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+       sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), Sound.class));
             }
         });
 
-        light.setOnClickListener(new View.OnClickListener() {
+
+
+        magnetic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), LightActivity.class));
+                startActivity(new Intent(getActivity(), Magnetic.class));
             }
         });
+
+        pressure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+                if (pressureSensor == null) {
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+
+
+
+
         memory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,21 +212,12 @@ public class PlaceholderFragment extends Fragment {
         flash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH))
                 startActivity(new Intent(getActivity(), Flash.class));
-            }
-        });
+                else
+                    Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support Flash Light.",Toast.LENGTH_SHORT).show();
 
-        orientation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), CompassActivity.class));
-            }
-        });
 
-        proximity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ProximityActivity.class));
             }
         });
 
