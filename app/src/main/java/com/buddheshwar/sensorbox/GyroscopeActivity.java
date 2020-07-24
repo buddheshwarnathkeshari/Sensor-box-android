@@ -2,11 +2,13 @@ package com.buddheshwar.sensorbox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class GyroscopeActivity extends AppCompatActivity implements SensorEventListener {
@@ -47,5 +49,12 @@ public class GyroscopeActivity extends AppCompatActivity implements SensorEventL
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 
+    }
+
+
+    public void goToInfo(View view) {
+        Intent i=new Intent(this,AboutActivity.class);
+        i.putExtra("VALUE",6);
+        startActivity(i);
     }
 }

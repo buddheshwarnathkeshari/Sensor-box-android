@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -22,15 +21,15 @@ import androidx.lifecycle.ViewModelProviders;
 import com.buddheshwar.sensorbox.Accelerometer;
 import com.buddheshwar.sensorbox.CompassActivity;
 import com.buddheshwar.sensorbox.Flash;
-import com.buddheshwar.sensorbox.FlashLightActivity;
 import com.buddheshwar.sensorbox.GyroscopeActivity;
 import com.buddheshwar.sensorbox.LightActivity;
 import com.buddheshwar.sensorbox.Magnetic;
-import com.buddheshwar.sensorbox.MainScreen;
 import com.buddheshwar.sensorbox.Memory;
+import com.buddheshwar.sensorbox.PressureActivity;
 import com.buddheshwar.sensorbox.ProximityActivity;
 import com.buddheshwar.sensorbox.R;
 import com.buddheshwar.sensorbox.Sound;
+import com.buddheshwar.sensorbox.TemperatureActivity;
 
 import static android.content.Context.SENSOR_SERVICE;
 
@@ -109,8 +108,10 @@ public class PlaceholderFragment extends Fragment {
             public void onClick(View v) {
                 if(accelerometerSensor==null)
                     Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
-                else
+                else{
+
                     startActivity(new Intent(getActivity(), Accelerometer.class));
+                }
             }
         });
 
@@ -156,6 +157,8 @@ public class PlaceholderFragment extends Fragment {
                 if (temperatureSensor == null) {
                     Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
                 }
+                else
+                    startActivity(new Intent(getActivity(), TemperatureActivity.class));
             }
 
         });
@@ -195,6 +198,8 @@ public class PlaceholderFragment extends Fragment {
                 if (pressureSensor == null) {
                     Toast.makeText(getActivity().getApplicationContext(),"Sorry, your device hardware doesn't support the sensor.",Toast.LENGTH_SHORT).show();
                 }
+                else
+                    startActivity(new Intent(getActivity(), PressureActivity.class));
             }
         });
 
@@ -234,7 +239,6 @@ public class PlaceholderFragment extends Fragment {
                 }
                 else
                 {
-
                     llSensor.setVisibility(View.GONE);
                     llTool.setVisibility(View.VISIBLE);
                 }

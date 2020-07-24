@@ -3,12 +3,13 @@ package com.buddheshwar.sensorbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Accelerometer extends AppCompatActivity implements SensorEventListener {
@@ -44,6 +45,13 @@ public class Accelerometer extends AppCompatActivity implements SensorEventListe
                 tvZ.setText(String.format("Z-Axis: %.2f",az));
             }
         }
+
+
+    public void goToInfo(View view) {
+        Intent i=new Intent(this,AboutActivity.class);
+        i.putExtra("VALUE",1);
+        startActivity(i);
+    }
 }
 
 

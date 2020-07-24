@@ -3,4 +3,31 @@
     <string name="title_activity_main_screen">SensorBox</string>
     <string name="tab_text_1">SENSOR BOX</string>
     <string name="tab_text_2">TOOL BOX</string>
+
+    <string-array name="Abouts">
+
+        <item>Accelerometer sensor is applied to detect device directions, i.e. auto rotate screen when the device is rotated vertically. it is also widely used in game development.</item>
+        <item>Light sensor is applied to detect the light intensity of the environment,and then adjusts screen  brightness and determines whether to turn off the keyboard light. Test the effect by putting your phone in dark place and retrieving it.</item>
+        <item>Orientation sensor is applied to detect direction status of the device, i.e. auto rotate screen when device is rotated horizontally. it can also be used as measure equipment like Spirit level.</item>
+        <item>Proximity sensor measures the distance between two objects, usually the device screen and our hands/face etc Test the effect by moving your hand forward and backward in front of the device in sensor box for android</item>
+        <item>Temperature sensor provides information about your device temperature, thus you can take action when the temperature is to low or high.</item>
+        <item>Gyroscope sensor can measure six directions at a time .You will be able to see the effects immediately by rotating your phone slightly.Bow Gyroscope sensor is mostly used in 3D game development , and possibly indoor navigation in future.</item>
+        <item>Sound detect the sound intensity around you and provides you detailed information about the changes.</item>
+        <item>Magnetic Field is used in many areas like metal detection and compass, which bring us lot convenience in our life.</item>
+        <item>Pressure is used to detect environmental pressure, thus to forecast weather and temperature </item>
+
+    </string-array>
+
+    <string-array name="sensors">
+        <item>Accelerometer</item>
+        <item>Light Sensor</item>
+        <item>Orientation</item>
+        <item>Proximity</item>
+        <item>Temperature</item>
+        <item>Gyroscope</item>
+        <item>Sound</item>
+        <item>Magnetic</item>
+        <item>Pressure</item>
+    </string-array>
+
 </resources>

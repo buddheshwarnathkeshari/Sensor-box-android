@@ -4,55 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GyroscopeActivity"
+    tools:context=".PressureActivity"
     android:background="#000000">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gyroscope Sensor"
+        android:text="Pressure Sensor"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
         android:textColor="#ffffff"
         android:layout_alignParentTop="true"
         android:layout_marginTop="25dp"/>
 
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tv_available"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        >
+        android:textSize="35dp"
 
+        android:textColor="#ffffff"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_reading"
+        android:layout_below="@id/tv_available"
+        android:textSize="35dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"/>
 
-        <TextView
-            android:id="@+id/tv_x"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="X-Axis"
-            android:textColor="#ffffff"
-            android:layout_margin="10dp"
-            android:textSize="25dp"/>
-
-        <TextView
-            android:id="@+id/tv_y"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Y-Axis"
-            android:layout_margin="10dp"
-            android:textColor="#ffffff"
-            android:textSize="25dp"/>
-
-        <TextView
-            android:id="@+id/tv_z"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Z-Axis"
-            android:layout_margin="10dp"
-            android:textColor="#ffffff"
-            android:textSize="25dp"/>
-
-    </LinearLayout>
 
 
 

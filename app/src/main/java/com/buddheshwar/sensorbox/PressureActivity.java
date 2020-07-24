@@ -11,34 +11,39 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class LightActivity extends AppCompatActivity /*implements SensorEventListener*/ {
-    TextView textLIGHT_available, textLIGHT_reading;
+public class PressureActivity extends AppCompatActivity {
+
+
+    TextView textPressure_reading;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_light);
+        setContentView(R.layout.activity_pressure);
 
-        textLIGHT_available
-                = (TextView)findViewById(R.id.tv_available);
-        textLIGHT_reading
+
+
+        textPressure_reading
                 = (TextView)findViewById(R.id.tv_reading);
 
         SensorManager mySensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
 
-        Sensor lightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        if(lightSensor != null){
+        Sensor pressureSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
+        if(pressureSensor != null){
             mySensorManager.registerListener(
-                    lightSensorListener,
-                    lightSensor,
+                    pressureSensorListener,
+                    pressureSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
 
-        } else {
-            textLIGHT_available.setText("Sensor.TYPE_LIGHT NOT Available");
         }
+
+
+
+
     }
 
-    private final SensorEventListener lightSensorListener
+
+    private final SensorEventListener pressureSensorListener
             = new SensorEventListener(){
 
         @Override
@@ -49,19 +54,18 @@ public class LightActivity extends AppCompatActivity /*implements SensorEventLis
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-            if(event.sensor.getType() == Sensor.TYPE_LIGHT){
-                textLIGHT_reading.setText("LIGHT: " + event.values[0]);
+            if(event.sensor.getType() == Sensor.TYPE_PRESSURE){
+                textPressure_reading.setText("LIGHT: " + event.values[0]);
             }
         }
 
     };
 
 
+
     public void goToInfo(View view) {
         Intent i=new Intent(this,AboutActivity.class);
-        i.putExtra("VALUE",2);
+        i.putExtra("VALUE",9);
         startActivity(i);
     }
-
 }
-

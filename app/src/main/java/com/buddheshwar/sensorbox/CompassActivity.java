@@ -2,12 +2,14 @@ package com.buddheshwar.sensorbox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -87,5 +89,12 @@ public class CompassActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // not in use
+    }
+
+
+    public void goToInfo(View view) {
+        Intent i=new Intent(this,AboutActivity.class);
+        i.putExtra("VALUE",3);
+        startActivity(i);
     }
 }

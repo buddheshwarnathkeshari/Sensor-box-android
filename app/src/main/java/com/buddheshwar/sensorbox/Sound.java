@@ -7,42 +7,35 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
 public class Sound extends AppCompatActivity {
+TextView tv1;
 
+ProgressBar pb;
+    MediaRecorder mRecorder;
     @SuppressLint("ShowToast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound);
 
-        TextView tv1=findViewById(R.id.tv1);
-        TextView tv2=findViewById(R.id.tv2);
-        TextView tv3=findViewById(R.id.tv3);
-        TextView tv4=findViewById(R.id.tv4);
 
-        MediaRecorder mRecorder = null;
+        tv1=findViewById(R.id.tv1);
+        pb=findViewById(R.id.progress_bar);
 
-   /*     SoundMeter soundmeter=new SoundMeter();
-        try {
-            soundmeter.start(Sound.this);
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(),e.getMessage().toString(), Toast.LENGTH_LONG).show();
-        }
-      double db= soundmeter.stop();
-        TextView tv=findViewById(R.id.tv_reading);
-       // tv.setText(""+db);
-      //  soundmeter.stop();
 
-*/
+        mRecorder = null;
 
 
 
@@ -53,42 +46,79 @@ public class Sound extends AppCompatActivity {
         }
 
 
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        mRecorder.setOutputFile("/dev/null");
+        try {
+            mRecorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mRecorder.start();
 
-            mRecorder = new MediaRecorder();
-            mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);  //exception occurs why????
-            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            mRecorder.setOutputFile("/dev/null");
-            try {
-                mRecorder.prepare();
 
-                tv2.setText("Prepare:\t"+mRecorder.getMaxAmplitude());
-            } catch (IOException e) {
-                e.printStackTrace();
+        final Handler handler=new Handler();
+        final Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+
+
+
+
+
+                int referenceAmp=94;
+
+                double result= 19* Math.log10(getAmplitude() /1);
+
+
+                tv1.setText(String.format("%.1f Db",result));
+
+
+                pb.setProgress((int)result);
+                if((int)result<40)
+                    pb.setProgressDrawable(getDrawable(R.drawable.custom_progressbar_blue));
+                else if((int)result<80)
+                    pb.setProgressDrawable(getDrawable(R.drawable.custom_progressbar_green));
+                else if((int)result<100)
+                    pb.setProgressDrawable(getDrawable(R.drawable.custom_progressbar_orange));
+                else
+                    pb.setProgressDrawable(getDrawable(R.drawable.custom_progressbar_red));
+
+
+
+                handler.postDelayed(this,300);
             }
-            mRecorder.start();
-            tv1.setText("Start:\t"+mRecorder.getMaxAmplitude());
-
-         //   mRecorder.stop();
-
-        tv3.setText("Stop:\t"+mRecorder.getMaxAmplitude());
-      //  mRecorder.release();
-
-        tv4.setText("Release:\t"+mRecorder.getMaxAmplitude());
-
-
-
-            mRecorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
-                @Override
-                public void onInfo(MediaRecorder mr, int what, int extra) {
-
-                }
-            });
+        };
+        handler.post(runnable);
 
 
 
 
+    }
+
+    private void update() {
 
 
+
+
+    }
+
+    public double getAmplitude(){
+        if (mRecorder != null)
+            return  (mRecorder.getMaxAmplitude());
+        else
+            return 0;
+
+    }
+
+
+
+
+    public void goToInfo(View view) {
+        Intent i=new Intent(this,AboutActivity.class);
+        i.putExtra("VALUE",7);
+        startActivity(i);
     }
 }

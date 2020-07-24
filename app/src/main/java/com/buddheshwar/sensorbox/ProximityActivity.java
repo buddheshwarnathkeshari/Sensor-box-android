@@ -68,6 +68,8 @@ public class ProximityActivity extends AppCompatActivity implements SensorEventL
     }
 
     public void goToInfo(View view) {
-        startActivity(new Intent(ProximityActivity.this,SensorInfoActivity.class));
+        Intent i=new Intent(this,AboutActivity.class);
+        i.putExtra("VALUE",4);
+        startActivity(i);
     }
 }
