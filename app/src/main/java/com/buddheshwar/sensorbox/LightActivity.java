@@ -3,16 +3,19 @@ package com.buddheshwar.sensorbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LightActivity extends AppCompatActivity /*implements SensorEventListener*/ {
     TextView textLIGHT_available, textLIGHT_reading;
+    ImageView imgBulb;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class LightActivity extends AppCompatActivity /*implements SensorEventLis
                 = (TextView)findViewById(R.id.tv_available);
         textLIGHT_reading
                 = (TextView)findViewById(R.id.tv_reading);
+        imgBulb=findViewById(R.id.img_bulb);
 
         SensorManager mySensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
 
@@ -50,7 +54,33 @@ public class LightActivity extends AppCompatActivity /*implements SensorEventLis
         @Override
         public void onSensorChanged(SensorEvent event) {
             if(event.sensor.getType() == Sensor.TYPE_LIGHT){
-                textLIGHT_reading.setText("LIGHT: " + event.values[0]);
+
+                float result=event.values[0];
+
+                textLIGHT_reading.setText("LIGHT: \n" + event.values[0]+" Luxes");
+
+
+                if(result>1200)
+                    imgBulb.setImageResource(R.drawable.ic_bulb_red);
+                else if(result>80)
+                    imgBulb.setImageResource(R.drawable.ic_bulb100);
+                else if(result>50)
+                    imgBulb.setImageResource(R.drawable.ic_bulb80);
+                else if(result>30)
+                    imgBulb.setImageResource(R.drawable.ic_bulb60);
+                else if(result>20)
+                    imgBulb.setImageResource(R.drawable.ic_bulb40);
+                else if(result>10)
+                    imgBulb.setImageResource(R.drawable.ic_bulb30);
+                else if(result>2)
+                    imgBulb.setImageResource(R.drawable.ic_bulb20);
+                else
+                    imgBulb.setImageResource(R.drawable.ic_bulb10);
+
+
+
+
+
             }
         }
 

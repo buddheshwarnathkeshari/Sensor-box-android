@@ -70,7 +70,7 @@ ProgressBar pb;
 
                 int referenceAmp=94;
 
-                double result= 19* Math.log10(getAmplitude() /1);
+                double result= 20* Math.log10(getAmplitude());
 
 
                 tv1.setText(String.format("%.1f Db",result));

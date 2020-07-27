@@ -46,7 +46,7 @@ public class TemperatureActivity extends AppCompatActivity {
         @Override
         public void onSensorChanged(SensorEvent event) {
             if(event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE){
-                textTemp_reading.setText("LIGHT: " + event.values[0]);
+                textTemp_reading.setText("Temperature: " + event.values[0]+"Unit");
             }
         }
 

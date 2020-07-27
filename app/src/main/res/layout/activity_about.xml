@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutActivity"
-    android:background="#000000">
+    android:background="@drawable/background">
+
 
     <TextView
         android:layout_height="wrap_content"

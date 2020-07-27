@@ -7,7 +7,14 @@
     tools:context=".GyroscopeActivity"
     android:background="#000000">
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.buddheshwar.sensorbox.movingcube.MovinfCubeFragment"
+        android:id="@+id/fl"/>
+
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gyroscope Sensor"
@@ -20,8 +27,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
+        android:layout_below="@id/tv_name"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+
+        android:orientation="horizontal"
         >
 
 
@@ -32,7 +42,7 @@
             android:text="X-Axis"
             android:textColor="#ffffff"
             android:layout_margin="10dp"
-            android:textSize="25dp"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/tv_y"
@@ -41,7 +51,7 @@
             android:text="Y-Axis"
             android:layout_margin="10dp"
             android:textColor="#ffffff"
-            android:textSize="25dp"/>
+            android:textSize="18dp"/>
 
         <TextView
             android:id="@+id/tv_z"
@@ -50,7 +60,7 @@
             android:text="Z-Axis"
             android:layout_margin="10dp"
             android:textColor="#ffffff"
-            android:textSize="25dp"/>
+            android:textSize="18dp"/>
 
     </LinearLayout>
 

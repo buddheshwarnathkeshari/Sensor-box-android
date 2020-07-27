@@ -1,3 +1,3 @@
 # SensorBox
 
-This project is initiated by Buddeshwar (Android Intern Batch 1)
+This project is initiated by Buddheshwar (Android Intern Batch 1)

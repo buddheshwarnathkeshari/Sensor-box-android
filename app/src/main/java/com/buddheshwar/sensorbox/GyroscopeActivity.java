@@ -39,9 +39,9 @@ public class GyroscopeActivity extends AppCompatActivity implements SensorEventL
             ay=event.values[1];
             az=event.values[2];
 
-            tvX.setText(String.format("X-Axis: %.2f",ax));
-            tvY.setText(String.format("Y-Axis: %.2f",ay));
-            tvZ.setText(String.format("Z-Axis: %.2f",az));
+            tvX.setText(String.format("X: %.2f",ax));
+            tvY.setText(String.format("Y: %.2f",ay));
+            tvZ.setText(String.format("Z: %.2f",az));
         }
     }
 
